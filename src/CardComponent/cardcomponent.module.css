@@ -1,0 +1,80 @@
+.mainContainer {
+  width: 100%;
+  border: 1px solid #e8e8e8;
+  border-radius: 2px;
+}
+
+.cardHeaderImage {
+  height: 200px;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+}
+
+.cardHeaderImage img {
+  display: block;
+  height: 100%;
+}
+
+.cardContent {
+  height: 180px;
+  padding: 24px;
+}
+
+.cardContent h3 {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.iconTextContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.iconClass {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.iconTextContainer p {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+  margin-left: 10px;
+}
+
+.phoneIcon {
+  transform: rotateX(90deg);
+}
+
+.cardFooter {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #fafafa;
+}
+
+.cardFooter div {
+  display: grid;
+  place-content: center;
+  margin: 12px 0;
+}
+
+.footerIcons {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+}
+
+.footerIcons:hover {
+  color: #1890ff;
+}
+
+.heartIcon {
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+
+.iconContainer {
+  border-right: 1px solid #e8e8e8;
+}

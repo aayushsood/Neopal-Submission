@@ -1,38 +1,146 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-div {
+  display: grid;
+  gap: 30px;
+  margin: 15px 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (min-width: 768px) {
+  .main-div {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .main-div {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.modalMainBody {
+  min-height: 400px;
+  width: 95%;
+  background-color: #fff;
+  border-radius: 4px;
+  animation: openingAnimation 0.5s ease-in-out;
 }
 
-@keyframes App-logo-spin {
+.contentContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 10px;
+  row-gap: 16px;
+  margin: 25px 0;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+
+.singleInputContainer {
+  display: flex;
+  /* justify-content: flex-end; */
+  align-items: center;
+}
+
+@keyframes openingAnimation {
   from {
-    transform: rotate(0deg);
+    transform: translateY(50%);
+    visibility: hidden;
   }
   to {
-    transform: rotate(360deg);
+    transform: translateY(0);
+    visibility: visible;
   }
+}
+
+@media screen and (min-width: 574px) {
+  .modalMainBody {
+    min-height: 400px;
+    width: 500px;
+    background-color: #fff;
+    border-radius: 4px;
+    animation: openingAnimation 0.5s ease-in-out;
+  }
+
+  .contentContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 10px;
+    row-gap: 30px;
+    margin: 25px 0;
+    padding-bottom: 20px;
+  }
+
+  .singleInputContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.modalHeading {
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 22px;
+  font-weight: 500;
+  margin-left: 25px;
+}
+
+.modalCloseIcon {
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.45);
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.inputLabel {
+  color: rgba(0, 0, 0, 0.85);
+  margin-left: 5px;
+}
+
+input {
+  width: 90%;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  outline: none;
+}
+
+input:hover {
+  border: 1px solid #1890ff;
+}
+
+input:focus {
+  border: 1px solid #1890ff;
+  box-shadow: 0px 0px 3px #40a9ff;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.modalFooter {
+  height: 64px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #e8e8e8;
 }

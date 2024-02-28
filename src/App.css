@@ -59,11 +59,13 @@
 
 @keyframes openingAnimation {
   from {
-    transform: translateY(50%);
+    /* transform: translateY(50%); */
+    transform: scale(0.1);
     visibility: hidden;
   }
   to {
-    transform: translateY(0);
+    /* transform: translateY(0); */
+    transform: scale(1);
     visibility: visible;
   }
 }
@@ -74,7 +76,7 @@
     width: 500px;
     background-color: #fff;
     border-radius: 4px;
-    animation: openingAnimation 0.5s ease-in-out;
+    animation: openingAnimation 0.3s ease-in-out;
   }
 
   .contentContainer {
@@ -120,7 +122,7 @@
   margin-left: 5px;
 }
 
-input {
+.inputStyle {
   width: 90%;
   padding: 6px;
   border-radius: 4px;
@@ -128,13 +130,27 @@ input {
   outline: none;
 }
 
-input:hover {
+.inputStyle:hover {
   border: 1px solid #1890ff;
 }
 
-input:focus {
+.inputStyle:focus {
   border: 1px solid #1890ff;
   box-shadow: 0px 0px 3px #40a9ff;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.inputStyleError {
+  width: 90%;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #f5222d;
+  outline: none;
+}
+
+.inputStyleError:focus {
+  border: 1px solid #f5222d;
+  box-shadow: 0px 0px 3px #f55c64;
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -143,4 +159,9 @@ input:focus {
   display: flex;
   justify-content: flex-end;
   border-top: 1px solid #e8e8e8;
+}
+
+.error-text {
+  color: #f5222d;
+  font-size: 14px;
 }

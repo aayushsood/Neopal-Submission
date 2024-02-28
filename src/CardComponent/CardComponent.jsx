@@ -16,6 +16,11 @@ const CardComponent = ({
   phoneNumber = "1-770-736-8031 x56442",
   url = "http://example.org",
   setOpenModal = () => {},
+  setUserData = () => {},
+  setUserIndex = () => {},
+  setData = () => {},
+  index,
+  data,
 }) => {
   return (
     <div className={styles.mainContainer}>
@@ -23,7 +28,7 @@ const CardComponent = ({
         <img src="https://avatars.dicebear.com/v2/avataaars/Bret.svg?options[mood][]=happy" />
       </div>
       <div className={styles.cardContent}>
-        <h3>{name}</h3>
+        <h3 style={{ fontSize: "16px" }}>{name}</h3>
         <div>
           <div className={styles.iconTextContainer}>
             <AiOutlineMail className={styles.iconClass} />
@@ -37,10 +42,7 @@ const CardComponent = ({
             <p>{phoneNumber}</p>
           </div>
           <div className={styles.iconTextContainer}>
-            <IoGlobeOutline
-              className={styles.iconClass}
-              style={{ transform: "rotate(270deg)" }}
-            />
+            <IoGlobeOutline className={styles.iconClass} />
             <p>{url}</p>
           </div>
         </div>
@@ -48,18 +50,52 @@ const CardComponent = ({
 
       <div className={styles.cardFooter}>
         <div className={styles.iconContainer}>
-          <GoHeart className={styles.heartIcon} />
+          {data[index]?.liked ? (
+            <GoHeartFill
+              onClick={() => {
+                let tempArr = [...data];
+                tempArr[index].liked = false;
+
+                setData([...tempArr]);
+              }}
+              className={styles.heartIcon}
+            />
+          ) : (
+            <GoHeart
+              onClick={() => {
+                let tempArr = [...data];
+                tempArr[index].liked = true;
+
+                setData([...tempArr]);
+              }}
+              className={styles.heartIcon}
+            />
+          )}
         </div>
         <div className={styles.iconContainer}>
           <AiOutlineEdit
             onClick={() => {
+              setUserIndex(index);
+              setUserData({
+                name: name,
+                email: email,
+                phone: phoneNumber,
+                website: url,
+              });
               setOpenModal(true);
             }}
             className={styles.footerIcons}
           />
         </div>
         <div>
-          <AiFillDelete className={styles.footerIcons} />
+          <AiFillDelete
+            onClick={() => {
+              const tempArr = [...data];
+              tempArr.splice(index, 1);
+              setData([...tempArr]);
+            }}
+            className={styles.footerIcons}
+          />
         </div>
       </div>
     </div>
